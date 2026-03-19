@@ -408,7 +408,8 @@ def inject_css():
         li[role="option"]:hover, li[role="option"][aria-selected="true"] {{ background-color: #f0f0f0 !important; color: #1a1520 !important; }}
 
         /* FIX: Text input (welcome screen name input) */
-        .stTextInput input {{ color: #1a1520 !important; -webkit-text-fill-color: #1a1520 !important; }}
+        .stTextInput input, .stTextInput div[data-baseweb="input"] input {{ color: #1a1520 !important; -webkit-text-fill-color: #1a1520 !important; background: {t['input_bg']} !important; }}
+        div[data-baseweb="input"] {{ background: rgba(255,255,255,0.55) !important; }}
     </style>
     """, unsafe_allow_html=True)
 
