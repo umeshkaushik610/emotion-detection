@@ -27,7 +27,7 @@ for k, v in DEFAULTS.items():
     if k not in st.session_state:
         st.session_state[k] = v
 
-@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def init_db():
     try:
         init_connection_pool()
@@ -412,7 +412,7 @@ def page_welcome():
     with theme_col:
         st.markdown('<div class="theme-toggle" style="display:flex;justify-content:flex-end;">', unsafe_allow_html=True)
         if st.button("☀️ Light" if st.session_state.dark_mode else "🌙 Dark", key="btn_theme_welcome"):
-            st.session_state.dark_mode = not st.session_state.dark_mode; st.experimental_rerun()
+            st.session_state.dark_mode = not st.session_state.dark_mode; st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
 
     # Centered welcome card
@@ -433,7 +433,7 @@ def page_welcome():
         if st.button("Let's Begin ✨", key="btn_start"):
             if name_input.strip():
                 st.session_state.user_name = name_input.strip()
-                st.experimental_rerun()
+                st.rerun()
             else:
                 st.warning("Please enter your name to continue.")
 
@@ -628,7 +628,7 @@ def render_nav():
             cls = "nav-active" if st.session_state.current_page == key else "nav-inactive"
             st.markdown(f'<div class="{cls}">', unsafe_allow_html=True)
             if st.button(label, key=f"nav_{key}"):
-                st.session_state.current_page = key; st.experimental_rerun()
+                st.session_state.current_page = key; st.rerun()
             st.markdown("</div>", unsafe_allow_html=True)
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -669,7 +669,7 @@ def page_reflect(df):
                         
                         # With caching completely removed from load_all_entries, 
                         # this rerun will instantly fetch the new data.
-                        st.experimental_rerun()
+                        st.rerun()
                     else: st.error("Analysis failed.")
                 except Exception as ex: st.error(f"Error: {ex}")
         else: st.warning(f"Please write at least 5 words. (You wrote {wc})")
@@ -685,7 +685,7 @@ def page_reflect(df):
         if st.button("Clear Result"):
             st.session_state.show_analysis = False; st.session_state.latest_result = None
             st.session_state.ta_key += 1
-            st.experimental_rerun()
+            st.rerun()
 
     c_ei, c_patterns, c_streak = st.columns([1, 1.2, 1])
 
@@ -894,14 +894,14 @@ def main():
     with ref_col:
         st.markdown('<div class="tb">', unsafe_allow_html=True)
         if st.button("↻ Refresh", key="btn_refresh"):
-            st.experimental_rerun()
+            st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
     with brand_col:
         st.markdown(f'<div style="text-align:center;font-size:2.1rem;font-weight:800;color:{t["heading"]};padding:0.3rem 0;letter-spacing:-0.5px;text-shadow: 0 2px 10px rgba(0,0,0,0.1);">Emotional Companion</div>', unsafe_allow_html=True)
     with theme_col:
         st.markdown('<div class="theme-toggle" style="display:flex;justify-content:flex-end;">', unsafe_allow_html=True)
         if st.button("☀️ Light" if st.session_state.dark_mode else "🌙 Dark", key="btn_theme"):
-            st.session_state.dark_mode = not st.session_state.dark_mode; st.experimental_rerun()
+            st.session_state.dark_mode = not st.session_state.dark_mode; st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
