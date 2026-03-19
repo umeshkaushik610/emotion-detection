@@ -1,0 +1,46 @@
+{
+  "model_name": "distilbert-base-uncased",
+  "num_emotions": 17,
+  "emotions": [
+    "joy",
+    "excitement",
+    "gratitude",
+    "proud",
+    "optimism",
+    "love",
+    "sadness",
+    "anger",
+    "annoyance",
+    "anxiety",
+    "fear",
+    "disappointment",
+    "embarrassment",
+    "guilt",
+    "surprise",
+    "confusion",
+    "neutral"
+  ],
+  "max_length": 128,
+  "training_date": "2026-02-18",
+  "epochs": 3,
+  "final_metrics": {
+    "test_accuracy": 0.6339033257035142,
+    "test_loss": 1.1379935616075736,
+    "best_val_accuracy": 0.645
+  },
+  "strong_emotions": [
+    "joy",
+    "sadness",
+    "gratitude",
+    "fear",
+    "anger"
+  ],
+  "weak_emotions": [
+    "neutral",
+    "anxiety",
+    "embarrassment",
+    "dissapointment"
+  ],
+  "training_samples": 59410,
+  "notes": "Model has positive bias. Best for detecting stong emotions in journal entries."
+}

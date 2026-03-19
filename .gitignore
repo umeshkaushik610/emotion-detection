@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Environment & Secrets
+.env
+.env.local
+*.env
+
+# ALL model weight files anywhere
+*.pt
+
+# Training Data
+emotion_detection/data/
+data/raw/
+data/processed/
+*.pkl
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Misc
+*.db
+.dist/
+design_previews/
