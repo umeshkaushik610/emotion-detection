@@ -397,6 +397,18 @@ def inject_css():
 
         h1,h2,h3,h4,h5 {{ color: {t['heading']} !important; }}
         p, div {{ color: {t['text']} !important; }}
+
+        /* FIX: Textarea text always dark (background is always light) */
+        .stTextArea textarea {{ color: #1a1520 !important; -webkit-text-fill-color: #1a1520 !important; }}
+        .stTextArea textarea::placeholder {{ color: #8a8590 !important; -webkit-text-fill-color: #8a8590 !important; }}
+
+        /* FIX: Dropdown/selectbox options always readable */
+        ul[role="listbox"] {{ background: #ffffff !important; }}
+        li[role="option"] {{ color: #1a1520 !important; }}
+        li[role="option"]:hover, li[role="option"][aria-selected="true"] {{ background-color: #f0f0f0 !important; color: #1a1520 !important; }}
+
+        /* FIX: Text input (welcome screen name input) */
+        .stTextInput input {{ color: #1a1520 !important; -webkit-text-fill-color: #1a1520 !important; }}
     </style>
     """, unsafe_allow_html=True)
 
