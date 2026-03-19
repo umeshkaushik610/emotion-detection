@@ -207,7 +207,7 @@ def inject_css():
             backdrop-filter: blur(8px) !important;
             border: 1.5px solid {t['input_border']} !important;
             border-radius: 16px !important; padding: 1.2rem !important;
-            color: {t['heading']} !important; font-size: 0.95rem !important;
+            color: #1a1520 !important; font-size: 0.95rem !important;
         }}
         .stTextArea>div>div>textarea:focus {{ border-color: {t['heading']} !important; box-shadow: 0 0 0 4px {t['accent_light']} !important; }}
         
