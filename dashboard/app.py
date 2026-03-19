@@ -671,7 +671,10 @@ def page_reflect(df):
                         # this rerun will instantly fetch the new data.
                         st.rerun()
                     else: st.error("Analysis failed.")
-                except Exception as ex: st.error(f"Error: {ex}")
+                except Exception as ex:
+                    import traceback
+                    st.error(f"Error: {ex}")
+                    st.code(traceback.format_exc())
         else: st.warning(f"Please write at least 5 words. (You wrote {wc})")
 
     if st.session_state.show_analysis and st.session_state.latest_result:
