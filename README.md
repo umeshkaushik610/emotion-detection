@@ -1,8 +1,8 @@
 # 🌿 Emotional Intelligence Companion
 
-A full-stack emotional journaling application that uses a **custom-trained DistilBERT model** to classify emotions from journal entries in real-time, with a glassmorphism UI and interactive analytics dashboard.
+A full-stack emotional journaling application that uses a **custom fine-tuned DistilBERT model** to classify emotions from journal entries in real-time, with a glassmorphism UI and interactive analytics dashboard.
 
-> **No external AI APIs.** The emotion detection model was trained from scratch as part of this project — no OpenAI, Google, or any third-party AI service is used. The entire ML pipeline (data processing, model training, inference) is self-contained.
+> **No external AI APIs.** The emotion detection model was fine-tuned from scratch as part of this project — no OpenAI, Google, or any third-party AI service is used. The entire ML pipeline (data processing, model training, inference) is self-contained.
 
 **🔗 [Live Demo](https://emotion-detection-kki5h6c3numuk8syg4zlvf.streamlit.app/)**
 
@@ -10,7 +10,7 @@ A full-stack emotional journaling application that uses a **custom-trained Disti
 
 ## What It Does
 
-Write a journal entry → the app analyzes your emotions using a custom-trained NLP model → view insights, trends, and patterns over time through interactive visualizations.
+Write a journal entry → the app analyzes your emotions using a custom fine-tuned NLP model → view insights, trends, and patterns over time through interactive visualizations.
 
 The app detects **17 emotions** including joy, sadness, anger, anxiety, gratitude, excitement, fear, and more — going beyond simple positive/negative sentiment analysis.
 
@@ -63,41 +63,61 @@ User Input (Journal Entry)
 
 ## Features
 
-### 📝 Reflect
-- Journal entry input with emotion analysis
-- Real-time emotion prediction with confidence scores
-- AI-generated reflections based on detected emotions
-- Emotional Intelligence score (0–100) based on balance, clarity, and consistency
-- Journaling streak tracker
+### 🏠 Welcome Screen
 
-### 📊 Snapshot
-- Emotion distribution (donut chart)
-- Sentiment timeline (positive/negative/neutral trends)
-- Confidence distribution histogram
-- Top emotions bar chart
+Users are greeted with a personalized name prompt. Enter your name and the app loads your previous journal data automatically.
 
-### 🔍 Insights
-- Positive/Negative/Neutral ratio breakdown
-- Writing patterns scatter plot
-- Activity heatmap (day × hour)
-- Emotion deep dive with per-emotion stats
-- Key takeaways with dominant emotion, streak, and trend analysis
+![Welcome Screen](screenshots/welcome_screen.png)
 
-### 📖 History
-- Full journal history with filters (emotion, date, sort order)
-- Per-entry emotion tags with confidence percentages
+---
 
-### 🎨 UI
-- Glassmorphism design with backdrop blur effects
-- Light/Dark mode toggle
-- Responsive glass cards with hover animations
-- Custom color palette per emotion
+### 📝 Reflect — Journal Entry & Emotion Analysis
+
+The core experience. Write a journal entry, hit Analyze, and get real-time emotion detection with confidence scores. The page also shows your Emotional Intelligence score (0–100), detected patterns, and journaling streak.
+
+![Reflect Light Mode](screenshots/reflect_light.png)
+
+![Reflect Dark Mode](screenshots/reflect_dark.png)
+
+---
+
+### 📊 Snapshot — Emotional Overview
+
+A visual dashboard with emotion distribution (donut chart), sentiment timeline, confidence histogram, and top emotions bar chart. All charts are interactive via Plotly.
+
+![Snapshot Dark Mode](screenshots/snapshot_dark.png)
+
+---
+
+### 🔍 Insights — Deep Analysis
+
+Positive/Negative/Neutral ratio breakdown, writing patterns, activity heatmap (day × hour), emotion deep dive with per-emotion stats, and key takeaways with trend analysis.
+
+![Insights](screenshots/insights_light.png)
+
+---
+
+### 📖 History — Journal Timeline
+
+Full journal history with filters by emotion, date range, and sort order. Each entry shows the detected emotion tag with confidence percentage.
+
+![History](screenshots/history_light.png)
+
+---
+
+### 🎨 Light & Dark Mode
+
+Glassmorphism design with backdrop blur effects, responsive glass cards with hover animations, and a custom color palette per emotion. Toggle between a warm gradient (light) and a starfield (dark) theme.
+
+| Light Mode | Dark Mode |
+|-----------|----------|
+| ![Light](screenshots/reflect_light.png) | ![Dark](screenshots/snapshot_dark.png) |
 
 ---
 
 ## Model Performance
 
-The emotion classifier is a **self-trained model** — no external AI APIs (OpenAI, Google, etc.) are used anywhere in this project. The model was fine-tuned from scratch on a combined dataset and handles 17 distinct emotions.
+The emotion classifier is a **self fine-tuned model** — no external AI APIs (OpenAI, Google, etc.) are used anywhere in this project. The model was fine-tuned on a combined dataset and handles 17 distinct emotions.
 
 **Overall Metrics:**
 - **Overall Accuracy:** ~63% across all 17 emotion classes
@@ -146,6 +166,7 @@ The model performs best on commonly expressed, well-represented emotions in the 
 │   └── reporting/
 │       ├── aggregations.py    # Data aggregation logic
 │       └── report_gen.py      # Report generation
+├── screenshots/               # App screenshots for README
 ├── data/
 │   └── models/                # Model config and tokenizer (weights on HF Hub)
 ├── requirements.txt
@@ -182,14 +203,6 @@ psql -U postgres -d emotion_detection_db -f src/database/schema.sql
 # Run the app
 streamlit run dashboard/app.py
 ```
-
----
-
-## Screenshots
-
-| Light Mode | Dark Mode |
-|-----------|----------|
-| Glassmorphism cards with gradient background | Starfield background with frosted glass effect |
 
 ---
 
